@@ -29,7 +29,7 @@
   --mono:  "JetBrains Mono", "Fira Code", Consolas, "Source Code Pro",
            "Sarasa Mono SC", Menlo, monospace;
 
-  --main-width: 47rem;
+  --main-width: 52rem;
   --content-pad: 1.5rem;
 }
 
@@ -151,9 +151,11 @@ sup a, sub a { font-size: .75em; }
   .site-header { background: rgba(255, 255, 255, .97); }
 }
 .site-header .inner {
-  max-width: var(--main-width);
+  width: 100%;
+  max-width: none;
   margin: 0 auto;
-  padding: 0 var(--content-pad);
+  /* 两端留白：小屏 1.5rem，随视口增大，最大 3.5rem，不紧贴屏幕边缘 */
+  padding: 0 clamp(1.5rem, 5vw, 3.5rem);
   display: flex;
   align-items: baseline;
   justify-content: space-between;
