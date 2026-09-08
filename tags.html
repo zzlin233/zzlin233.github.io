@@ -1,0 +1,23 @@
+---
+layout: page
+title: 标签
+permalink: /tags.html
+---
+{% assign sorted_tags = site.tags | sort %}
+<div class="tag-cloud">
+  {% for tag in sorted_tags %}
+    <a class="tag" href="#{{ tag[0] | url_encode }}">#{{ tag[0] }}</a>
+  {% endfor %}
+</div>
+
+{% for tag in sorted_tags %}
+  <h2 class="archive-year" id="{{ tag[0] }}"># {{ tag[0] }} <span class="post-date">({{ tag[1] | size }} 篇)</span></h2>
+  <ul class="archive-list">
+    {% for post in tag[1] %}
+      <li>
+        <span class="date">{{ post.date | date: "%Y-%m-%d" }}</span>
+        <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endfor %}

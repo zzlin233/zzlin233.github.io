@@ -1,0 +1,15 @@
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath:  [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']]
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+    processHtmlClass: 'math'
+  },
+  svg: { fontCache: 'global' }
+};
+</script>
+<script defer src="{{ site.mathjax_cdn | default: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js' }}"
+        id="MathJax-script"></script>

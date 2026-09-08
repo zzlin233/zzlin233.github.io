@@ -1,0 +1,81 @@
+# ============================================================
+#  jyywiki-blog —— 仿 jyywiki.cn 的极简博客主题
+#  部署: GitHub Pages (Jekyll)
+# ============================================================
+
+# ---------- 站点信息 ----------
+title:          Yanyan's Wiki
+subtitle:       热爱学习，喜欢分享
+author:         Your Name
+email:          you@example.com
+description: >-
+  一个仿照 jyywiki.cn 风格的极简博客。
+license:        CC BY-NC-SA 4.0
+license_url:    https://creativecommons.org/licenses/by-nc-sa/4.0/
+
+# 备案信息(可选，国内用户填，如不需要请留空)
+icp:            ""
+
+# ---------- URL ----------
+# 用户名主页:  https://username.github.io          -> baseurl: ""
+# 项目主页:    https://username.github.io/repo/    -> baseurl: "/repo"
+url:            "https://yourname.github.io"
+baseurl:        ""
+
+lang:           zh-CN
+timezone:       Asia/Shanghai
+
+# ---------- 顶部导航 (标题: 链接) ----------
+navigation:
+  - title: 文章
+    url:   /archive.html
+  - title: 标签
+    url:   /tags.html
+  - title: 关于
+    url:   /about.html
+
+# ---------- 链接 (可留空) ----------
+links:
+  github:      https://github.com/yourname
+  email:       mailto:you@example.com
+
+# ---------- 构建 ----------
+markdown: kramdown
+highlighter: rouge
+
+kramdown:
+  input: GFM
+  hard_wrap: false
+  auto_ids: true
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: highlight
+    span:
+      line_numbers: false
+
+permalink: /:year/:month/:day/:title.html
+
+# 是否加载 MathJax (支持 $...$ 与 $$...$$)
+mathjax: true
+# MathJax CDN(国内访问慢可换成镜像, 如 https://cdn.bootcdn.net/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js)
+mathjax_cdn: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js
+
+# 每篇文章的默认 front matter
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      author: "Your Name"
+
+# ---------- 插件 (GitHub Pages 白名单) ----------
+plugins:
+  - jekyll-sitemap
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - .github
+  - vendor

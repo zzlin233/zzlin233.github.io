@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: 'zh-CN' }}">
+  {% include head.html %}
+  <body>
+    <a class="skip-link" href="#content">跳到正文</a>
+    <div class="site">
+      {% include header.html %}
+      <main id="content" class="content">
+        {{ content }}
+      </main>
+      {% include footer.html %}
+    </div>
+    <script src="{{ '/assets/js/main.js' | relative_url }}" defer></script>
+    {% if site.mathjax and page.math != false %}
+      {% include mathjax.html %}
+    {% endif %}
+  </body>
+</html>

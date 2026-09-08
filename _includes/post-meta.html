@@ -1,0 +1,18 @@
+{% comment %}
+  文章头部信息：日期 / 作者 / 标签
+{% endcomment %}
+<p class="post-meta">
+  <time datetime="{{ page.date | date_to_xmlschema }}">
+    {{ page.date | date: "%Y 年 %m 月 %d 日" }}
+  </time>
+  {% if page.author %}
+    · {{ page.author | escape }}
+  {% endif %}
+  {% if page.tags and page.tags.size > 0 %}
+    <span class="post-tags">
+      {% for tag in page.tags %}
+        <a class="tag" href="{{ '/tags.html' | relative_url }}#{{ tag | url_encode }}">#{{ tag | escape }}</a>
+      {% endfor %}
+    </span>
+  {% endif %}
+</p>

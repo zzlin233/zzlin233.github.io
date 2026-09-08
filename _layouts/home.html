@@ -1,0 +1,49 @@
+---
+layout: default
+---
+{% comment %}
+  主页布局：仿 jyywiki.cn 首页 —— 大标题 + 小节列表式导航
+  前置变量:
+    intro     : 标题下的简介(可选)
+    sections  : 可选的分节 { title, desc }(复杂需求可自行扩展)
+{% endcomment %}
+<article class="home-page">
+  <h1 class="home-title">{{ site.title | escape }}</h1>
+  {% if site.subtitle %}
+    <p class="home-subtitle">{{ site.subtitle | escape }}</p>
+  {% endif %}
+  {% if page.intro %}
+    <div class="home-intro">{{ page.intro | markdownify }}</div>
+  {% endif %}
+
+  <section class="home-block">
+    <h2>最新文章</h2>
+    <ul class="post-list">
+      {% for post in site.posts limit: 8 %}
+        <li class="post-item">
+          <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+          <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+          {% if post.excerpt %}
+            <p class="post-excerpt">{{ post.excerpt | strip_html | truncate: 120 }}</p>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+    {% if site.posts.size > 8 %}
+      <p><a class="more" href="{{ '/archive.html' | relative_url }}">全部文章 →</a></p>
+    {% endif %}
+  </section>
+
+  <section class="home-block">
+    <h2>文章存档</h2>
+    <ul class="year-list">
+      {% assign posts_by_year = site.posts | group_by_exp: "post", "post.date | date: '%Y'" %}
+      {% for year in posts_by_year %}
+        <li>
+          <a href="{{ '/archive.html' | relative_url }}#{{ year.name }}">{{ year.name }} 年</a>
+          <span class="post-date">({{ year.items | size }} 篇)</span>
+        </li>
+      {% endfor %}
+    </ul>
+  </section>
+</article>

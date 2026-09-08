@@ -1,0 +1,22 @@
+---
+layout: page
+title: 归档
+permalink: /archive.html
+---
+{% assign posts_by_year = site.posts | group_by_exp: "post", "post.date | date: '%Y'" %}
+{% for year in posts_by_year %}
+  <h2 class="archive-year" id="{{ year.name }}">{{ year.name }} 年 <span class="post-date">({{ year.items | size }} 篇)</span></h2>
+  <ul class="archive-list">
+    {% for post in year.items %}
+      <li>
+        <span class="date">{{ post.date | date: "%m-%d" }}</span>
+        <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+        {% if post.tags %}
+          <span class="post-tags">
+            {% for tag in post.tags %}<a class="tag" href="{{ '/tags.html' | relative_url }}#{{ tag | url_encode }}">#{{ tag | escape }}</a>{% endfor %}
+          </span>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+{% endfor %}

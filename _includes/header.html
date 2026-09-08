@@ -1,0 +1,45 @@
+{% comment %}
+  顶部栏：左侧站点名（仿 jyywiki 的 "Yanyan's Wiki"），右侧导航
+{% endcomment %}
+<header class="site-header">
+  <div class="inner">
+    <a class="site-name" href="{{ '/' | relative_url }}">
+      {{ site.title | escape }}
+    </a>
+    {% if site.navigation %}
+    <nav class="site-nav" aria-label="主导航">
+      {% for item in site.navigation %}
+        {% assign item_url = item.url | relative_url %}
+        <a href="{{ item_url }}"
+           {% if page.url == item.url %}class="active" aria-current="page"{% endif %}>
+          {{ item.title | escape }}
+        </a>
+      {% endfor %}
+      {% if site.links.github %}
+        <a class="ext" href="{{ site.links.github }}">GitHub ↗</a>
+      {% endif %}
+    </nav>
+    {% endif %}
+  </div>
+</header>
+
+{% comment %}
+  jyywiki 式路径条：首页 › 父页面 › 当前页
+  在首页隐藏；在文章/页面页显示
+{% endcomment %}
+{% if page.breadcrumb != false %}
+<nav class="crumbs" aria-label="面包屑">
+  <a href="{{ '/' | relative_url }}">{{ site.title | escape }}</a>
+  {% assign crumbs = page.breadcrumbs %}
+  {% if crumbs %}
+    {% for c in crumbs %}
+      <span class="sep">›</span>
+      <a href="{{ c.url | relative_url }}">{{ c.title | escape }}</a>
+    {% endfor %}
+  {% endif %}
+  {% if page.title and page.layout != 'home' %}
+    <span class="sep">›</span>
+    <span class="here">{{ page.title | escape }}</span>
+  {% endif %}
+</nav>
+{% endif %}

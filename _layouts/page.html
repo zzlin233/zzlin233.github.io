@@ -1,0 +1,16 @@
+---
+layout: default
+---
+{% comment %}
+  普通页面布局（关于 / 归档 / 标签 等）
+{% endcomment %}
+<article class="page">
+  {% if page.title %}
+    <header class="page-header">
+      <h1 class="page-title">{{ page.title | escape }}</h1>
+    </header>
+  {% endif %}
+  <div class="page-body">
+    {{ content }}
+  </div>
+</article>

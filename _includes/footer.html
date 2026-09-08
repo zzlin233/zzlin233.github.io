@@ -1,0 +1,17 @@
+<footer class="site-footer">
+  <div class="inner">
+    <p class="footer-license">
+      {% if site.license and site.license_url %}
+        本文采用 <a href="{{ site.license_url }}" rel="license">{{ site.license | escape }}</a> 许可协议
+      {% elsif site.license %}
+        {{ site.license | escape }}
+      {% endif %}
+    </p>
+    <p class="footer-meta">
+      © {{ site.time | date: "%Y" }} {{ site.author | escape }} ·
+      Powered by <a href="https://jekyllrb.com/">Jekyll</a> ·
+      主题仿 <a href="https://jyywiki.cn/">jyywiki.cn</a>
+      {% if site.icp %}<br><a href="https://beian.miit.gov.cn/">{{ site.icp | escape }}</a>{% endif %}
+    </p>
+  </div>
+</footer>
