@@ -9,7 +9,7 @@ permalink: /about.html
 [jyywiki.cn](https://jyywiki.cn/) 的极简风格：
 
 - 内容至上：无封面大图、无侧边栏、无花哨动效；
-- 红黑配色：纸白背景、近黑正文、红字链接；
+- 蓝黑配色：纸白背景、近黑正文、蓝字链接；
 - jyywiki 式路径条与提示卡片；
 - 原生支持 MathJax 公式与代码高亮。
 

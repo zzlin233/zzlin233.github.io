@@ -5,7 +5,7 @@
    ============================================================ */
 
 :root {
-  /* 主色调：纸白背景 + 近黑正文 + jyy 式红 */
+  /* 主色调：纸白背景 + 近黑正文 + jyywiki 式蓝 */
   --bg:            #ffffff;
   --fg:            #212121;
   --muted:         #666666;
@@ -13,13 +13,13 @@
   --line:          #e4e4e4;
   --line-strong:   #cfcfcf;
 
-  --accent:        #b3261e;   /* 链接 / 强调红 */
-  --accent-dark:   #8a1c15;
-  --accent-bg:     #fdf1f0;
+  --accent:        #1565c0;   /* 链接 / 强调蓝 */
+  --accent-dark:   #0d47a1;
+  --accent-bg:     #e8f0fb;
 
   --code-bg:       #f7f6f3;
   --code-border:   #ecebe6;
-  --selection:     rgba(179, 38, 30, .15);
+  --selection:     rgba(21, 101, 192, .17);
 
   --serif: "Palatino Linotype", "Book Antiqua", Palatino, "Songti SC",
            "STSong", "SimSun", Georgia, "Times New Roman", serif;
@@ -136,8 +136,20 @@ sup a, sub a { font-size: .75em; }
   padding: .5rem var(--content-pad) 3rem;
 }
 
-/* ---------- 顶部栏 (jyywiki: 站点名 + 导航) ---------- */
-.site-header { border-bottom: 1px solid var(--line); }
+/* ---------- 顶部栏 (jyywiki: 毛玻璃 + 站点名 + 导航) ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, .68);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  backdrop-filter: blur(14px) saturate(160%);
+  border-bottom: 1px solid rgba(0, 0, 0, .07);
+}
+/* 浏览器不支持 backdrop-filter 时的回退 */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .site-header { background: rgba(255, 255, 255, .97); }
+}
 .site-header .inner {
   max-width: var(--main-width);
   margin: 0 auto;
@@ -149,6 +161,10 @@ sup a, sub a { font-size: .75em; }
   gap: .2em 1em;
   min-height: 3.2rem;
 }
+
+/* 锚点跳转时避免被吸顶毛玻璃栏遮挡 */
+.content h1[id], .content h2[id], .content h3[id],
+.content h4[id], .content h5[id] { scroll-margin-top: 4.6rem; }
 .site-name {
   font-family: var(--serif);
   font-size: 1.35rem;
@@ -236,7 +252,7 @@ a.more { font-size: .95rem; }
   font-size: .78rem;
   color: var(--accent);
   background: var(--accent-bg);
-  border: 1px solid #f0d6d4;
+  border: 1px solid #cfe0f7;
   border-radius: 3px;
   padding: 0 .5em;
   margin-left: .4em;
@@ -316,7 +332,7 @@ code {
   border: 1px solid var(--code-border);
   border-radius: 3px;
   padding: .08em .35em;
-  color: #b3261e;
+  color: var(--accent-dark);
 }
 pre {
   margin: 1.4em 0;
@@ -345,7 +361,7 @@ pre code {
 .highlighter-rouge pre { margin: 0; }
 .highlight .c,  .highlight .cm, .highlight .c1, .highlight .cs { color: #8c8c8c; font-style: italic; }
 .highlight .k,  .highlight .kd, .highlight .kn, .highlight .kp,
-.highlight .kr, .highlight .kt                      { color: #b3261e; font-weight: 600; }
+.highlight .kr, .highlight .kt                      { color: #0d47a1; font-weight: 600; }
 .highlight .kc, .highlight .nb                       { color: #0b7285; }
 .highlight .s,  .highlight .s1, .highlight .s2,
 .highlight .sb, .highlight .sc, .highlight .sd,
@@ -358,8 +374,8 @@ pre code {
 .highlight .nn                                    { color: #364fc7; }
 .highlight .o,  .highlight .p                          { color: #555; }
 .highlight .gh, .highlight .gi                        { color: #0c7a43; }
-.highlight .gd                                        { color: #b3261e; }
-.highlight .err { color: #b3261e; }
+.highlight .gd                                        { color: #c62828; }
+.highlight .err { color: #c62828; }
 
 /* ---------- 表格 ---------- */
 .table-wrap { overflow-x: auto; margin: 1.4em 0; }
