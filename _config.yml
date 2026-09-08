@@ -4,10 +4,10 @@
 # ============================================================
 
 # ---------- 站点信息 ----------
-title:          Yanyan's Wiki
+title:          ZZLin's Wiki
 subtitle:       热爱学习，喜欢分享
-author:         Your Name
-email:          you@example.com
+author:         zzlin233
+email:          zzlin233@users.noreply.github.com
 description: >-
   一个仿照 jyywiki.cn 风格的极简博客。
 license:        CC BY-NC-SA 4.0
@@ -19,7 +19,7 @@ icp:            ""
 # ---------- URL ----------
 # 用户名主页:  https://username.github.io          -> baseurl: ""
 # 项目主页:    https://username.github.io/repo/    -> baseurl: "/repo"
-url:            "https://yourname.github.io"
+url:            "https://zzlin233.github.io"
 baseurl:        ""
 
 lang:           zh-CN
@@ -36,8 +36,8 @@ navigation:
 
 # ---------- 链接 (可留空) ----------
 links:
-  github:      https://github.com/yourname
-  email:       mailto:you@example.com
+  github:      https://github.com/zzlin233
+  email:       mailto:zzlin233@users.noreply.github.com
 
 # ---------- 构建 ----------
 markdown: kramdown
